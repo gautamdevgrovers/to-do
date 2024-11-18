@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    networks:
+      - webnet
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: sysadmindb
+      POSTGRES_USER: sysadmin
+      POSTGRES_PASSWORD: adminpass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - webnet
+
+networks:
+  webnet:
+
+volumes:
+  postgres_data:
