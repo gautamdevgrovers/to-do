@@ -24,3 +24,5 @@ if [[ -n $docker_version && -n $docker_compose_version ]]; then
 else
     echo -e "\n❌ Docker or Docker Compose installation failed. Please check for errors."
 fi
+
+sudo chown $USER:$USER /var/run/docker.sock
